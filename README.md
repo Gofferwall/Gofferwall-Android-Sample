@@ -1,4 +1,6 @@
 # Gofferwall-Android-Sample
+[![GitHub package.json version](https://img.shields.io/badge/Android-1.0.0-blue)](../../releases)
+[![GitHub package.json version](https://img.shields.io/badge/iOS-1.0.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
 
 ## Requirements
 
