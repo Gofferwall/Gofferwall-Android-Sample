@@ -1,0 +1,11 @@
+# Error Information
+| Code                      | Value | Description                         | Cause                                                                                                                                |
+|---------------------------|-------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| UNKNOWN_ERROR (for Unity) | -1    | ""                                  | 알 수 없음                                                                                                                               |
+| INTERNAL_ERROR            | 0     | "Internal error"                    | 서버로부터 수신된 데이터에 문제가 발생                                                                                                                |
+| MEDIATION_ERROR           | 1     | "3rd party mediation network error" | 네트웍사(미디에이션)의 문제                                                                                                                      |
+| INITIALIZE_ERROR          | 2     | "mediaId/mediaSecret must be valid" | 이니셜라이즈되지 않은 상태에서 Gofferwall.show() 호출 시 발생                                                                                           |
+| SERVER_SETTING_ERROR      | 3     | "Server settings are incorrect"     | - 광고를 보여주기 위해 필요한 내부 설정값 오류</br>- AndroidManifest에 설정된 값 혹은 런타임 시 서버로부터 전달받은 값이 정확하지 않음.</br>- Adiscope 어드민 설정의 수익화, 유닛 활성화가 OFF인 경우 |
+| INVALID_REQUEST           | 4     | "The request is invalid"            | - Gofferwall.show() 호출 시 입력한 unitId 값이 잘못되었을 경우 발생                                                                                   |
+| NETWORK_ERROR             | 5     | "There is a network problem"        | Network connection의 문제                                                                                                               |
+| USER_SETTING_ERROR        | 6     | "Userid is not set"                 | userId 값이 세팅되어 있지 않은 상태에서 Gofferwall.show() 호출 시 발생                                                                                  |
