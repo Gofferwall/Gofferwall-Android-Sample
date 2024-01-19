@@ -12,6 +12,14 @@
 
 <br>
 
+## Note
+> 
+> If one of the target audiences for your app is children, Gofferwall is not supported due to Google Play Families Policies.
+
+</br>
+
+<br>
+
 ## Contents
 * [Integration Guide](#Integration-Guide)
 * [Other API](./docs/api_info.md)
