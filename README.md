@@ -242,7 +242,7 @@ You can request show by specifying the integrated network adapter name.  <br></b
 **Java**
 ```java
 // you should be set userId before call show offerwall
-AdiscopeGlobalSdk.setUserId(userId)
+AdiscopeGlobalSdk.setUserId(userId);
         
 AdiscopeGlobalOfferwall.show(
         "INPUT_YOUR_GOFFERWALL_UNIT_ID",
@@ -266,17 +266,6 @@ AdiscopeGlobalOfferwall.show(
 ```kotlin
 // you should be set userId before call show offerwall
 AdiscopeGlobalSdk.setUserId(userId)
-
-// AdiscopeGlobalOfferwall.show(unitId, activity, listener)
-AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", activity, object : OfferwallListener {
-    override fun onOfferwallOpened(unitId: String?) {
-        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
-    }
-
-    override fun onOfferwallFailedToOpen(unitId: String?, error: AdiscopeGlobalError?) {
-        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallFailedToOpen: $unitId - $error")
-    }
-})
 
 // AdiscopeGlobalOfferwall.show(unitId, networkName, activity, listener)
 AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", "INPUT_NETWORK_NAME", activity, object : OfferwallListener {

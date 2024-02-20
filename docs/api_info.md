@@ -274,11 +274,12 @@ AdiscopeGlobalOfferwall.show(
         });
 ```
 
+
 **Kotlin**
 ```kotlin
 
 // you should be set userId before call show offerwall
-AdiscopeGlobalSdk.setUserId(userId)
+AdiscopeGlobalSdk.setUserId(userId);
 
 AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", "INPUT_NETWORK_NAME", activity, object : OfferwallListener {
     override fun onOfferwallOpened(unitId: String?) {
