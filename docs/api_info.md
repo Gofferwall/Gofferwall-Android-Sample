@@ -186,6 +186,12 @@ Log.d(TAG, "AdiscopeGlobalSdk.getNetworkSdkVersion = ${AdiscopeGlobalSdk.getNetw
 
 ## AdiscopeGlobalOfferwall
 ### Show
+show 함수는 아래 두가지로 지원하며, 용도에 따라 선택해서 사용할 수 있다.
+* `AdiscopeGlobalOfferwall.show(String unitId, Activity activity, OfferwallListener listener)`
+* `AdiscopeGlobalOfferwall.show(String unitId, String networkName, Activity activity, OfferwallListener listener)`
+
+
+#### A. `void show(String unitId, Activity activity, OfferwallListener listener)`
 오퍼월 광고를 사용자에게 표시한다.  
 오퍼월에 진입하기 전에 반드시 유저 아이디를 설정해야 하며, 설정하지 않았을 경우 오퍼월 진입이 불가하다.
 * `void show(String unitId, Activity activity, OfferwallListener listener)`
@@ -224,6 +230,57 @@ AdiscopeGlobalOfferwall.show(
 AdiscopeGlobalSdk.setUserId(userId)
 
 AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", activity, object : OfferwallListener {
+    override fun onOfferwallOpened(unitId: String?) {
+        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
+    }
+
+    override fun onOfferwallFailedToOpen(unitId: String?, error: AdiscopeGlobalError?) {
+        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallFailedToOpen: $unitId - $error")
+    }
+
+})
+```
+
+#### B. `void show(String unitId, String networkName, Activity activity, OfferwallListener listener)`
+지정된 네트워크 오퍼월 광고를 사용자에게 표시한다.  
+오퍼월에 진입하기 전에 반드시 유저 아이디를 설정해야 하며, 설정하지 않았을 경우 오퍼월 진입이 불가하다.
+* `void show(String unitId, Activity activity, OfferwallListener listener)`
+    * activity: 상위 액티비티
+    * unitId: 사용자에게 표시할 오퍼월 광고의 유닛 아이디
+    * networkName: 연동되어 있는 네트워크명으로 대소문자 구분 없음 (ex. tapjoy, tnk)
+    * listener: 오퍼월의 show 여부에 대한 결과를 받기 위한 콜백 리스너
+        * `onOfferwallOpened(unitId)`: 오퍼월 광고가 열릴 때
+        * `onOfferwallFailedToOpened(unitId, error)`: 오퍼월 광고를 보여줄 수 없을 때
+
+**Java**
+```java
+// you should be set userId before call show offerwall
+AdiscopeGlobalSdk.setUserId(userId);
+        
+AdiscopeGlobalOfferwall.show(
+        "INPUT_YOUR_GOFFERWALL_UNIT_ID",
+        "INPUT_NETWORK_NAME",
+        activity,
+        new OfferwallListener() {
+            @Override
+            public void onOfferwallOpened(String unitId) {
+                Log.d(TAG, "onOfferwallOpened: " + unitId);
+            }
+
+            @Override
+            public void onOfferwallFailedToOpen(String unitId, AdiscopeGlobalError error) {
+                Log.d(TAG, "onOfferwallFailedToOpen: " + unitId + " - " + error);
+            }
+        });
+```
+
+**Kotlin**
+```kotlin
+
+// you should be set userId before call show offerwall
+AdiscopeGlobalSdk.setUserId(userId)
+
+AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", "INPUT_NETWORK_NAME", activity, object : OfferwallListener {
     override fun onOfferwallOpened(unitId: String?) {
         Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
     }

@@ -56,7 +56,7 @@ allprojects {
 ```groovy
 dependencies {
     // [required] global adiscope core library
-    implementation "com.adiscope.global:adiscope-sdk:1.0.0"
+    implementation "com.adiscope.global:adiscope-sdk:1.1.0"
 
     // must add it to use the gofferwall feature 
     // [required] tapjoy adapter
@@ -189,7 +189,13 @@ AdiscopeGlobalSdk.initialize(
 
 <br></br>
 ### 4. Show Offerwall
+Sdk provide two show functions below, and you can be used one of them depending on the purpose.
 
+* `AdiscopeGlobalOfferwall.show(unitId, activity, listener)`
+* `AdiscopeGlobalOfferwall.show(unitId, networkName, activity, listener)`
+
+<br></br>
+#### A) AdiscopeGlobalOfferwall.show(unitId, activity, listener)
 **Java**
 ```java
 // you should be set userId before call show offerwall
@@ -214,10 +220,54 @@ AdiscopeGlobalOfferwall.show(
 
 **Kotlin**
 ```kotlin
-
 // you should be set userId before call show offerwall
 AdiscopeGlobalSdk.setUserId(userId)
 
+AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", activity, object : OfferwallListener {
+  override fun onOfferwallOpened(unitId: String?) {
+    Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
+  }
+
+  override fun onOfferwallFailedToOpen(unitId: String?, error: AdiscopeGlobalError?) {
+    Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallFailedToOpen: $unitId - $error")
+  }
+})
+```
+
+<br></br>
+
+#### B) AdiscopeGlobalOfferwall.show(unitId, networkName, activity, listener)
+You can request show by specifying the integrated network adapter name.  <br></br>
+
+**Java**
+```java
+// you should be set userId before call show offerwall
+AdiscopeGlobalSdk.setUserId(userId)
+        
+AdiscopeGlobalOfferwall.show(
+        "INPUT_YOUR_GOFFERWALL_UNIT_ID",
+        "INPUT_NETWORK_NAME"
+        activity,
+        new OfferwallListener() {
+            @Override
+            public void onOfferwallOpened(String unitId) {
+                    Log.d(TAG, "onOfferwallOpened: " + unitId);
+            }
+
+            @Override
+            public void onOfferwallFailedToOpen(String unitId, AdiscopeGlobalError error) {
+                    Log.d(TAG, "onOfferwallFailedToOpen: " + unitId + " - " + error);
+            }
+        });
+```
+
+
+**Kotlin**
+```kotlin
+// you should be set userId before call show offerwall
+AdiscopeGlobalSdk.setUserId(userId)
+
+// AdiscopeGlobalOfferwall.show(unitId, activity, listener)
 AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", activity, object : OfferwallListener {
     override fun onOfferwallOpened(unitId: String?) {
         Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
@@ -226,6 +276,16 @@ AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", activity, object :
     override fun onOfferwallFailedToOpen(unitId: String?, error: AdiscopeGlobalError?) {
         Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallFailedToOpen: $unitId - $error")
     }
+})
 
+// AdiscopeGlobalOfferwall.show(unitId, networkName, activity, listener)
+AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", "INPUT_NETWORK_NAME", activity, object : OfferwallListener {
+    override fun onOfferwallOpened(unitId: String?) {
+        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallOpened: $unitId")
+    }
+
+    override fun onOfferwallFailedToOpen(unitId: String?, error: AdiscopeGlobalError?) {
+        Log.d(TAG, "AdiscopeGlobalOfferwall.onOfferwallFailedToOpen: $unitId - $error")
+    }
 })
 ```
