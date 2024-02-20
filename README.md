@@ -90,13 +90,12 @@ Set your TNK AppId received from Adiscope. TNK Sdk reads this information and in
 
 Sdk provide two Initialize functions below, and you can be used one of them depending on the purpose.
 * `AdiscopeGlobalSdk.initialize(Activity activity, int mediaId, String mediaSecret, AdiscopeGlobalInitializationListener listener)`
-  * If the media environment needs to be changed depending on the build environment programmatically
 * `AdiscopeGlobalSdk.initialize(Activity activity, AdiscopeGlobalInitializationListener listener)`
-  * If you use mediaId and secretKey as fixed
 
 <br></br>
 
 #### A) AdiscopeGlobalSdk.initialize(activity, mediaId, mediaSecret, listener)
+  * If the media environment needs to be changed depending on the build environment programmatically
 
 **Java**
 ```java
@@ -133,6 +132,8 @@ AdiscopeGlobalSdk.initialize(
 <br></br>
 
 #### B) AdiscopeGlobalSdk.initialize(activity, listener)
+  * If you use mediaId and secretKey as fixed
+
 If you have defined `adiscope.global.mediaId`, `adiscope.global.mediaSecret` metadata in your AndroidManifest.xml, you can use function `AdiscopeGlobalSdk.initialize(activity, listener)`.  
 Sdk reads `adiscope.global.mediaId`, `adiscope.global.mediaSecret` meta-data and initializes it.
 
@@ -189,8 +190,8 @@ AdiscopeGlobalSdk.initialize(
 
 <br></br>
 ### 4. Show Offerwall
-Sdk provide two show functions below, and you can be used one of them depending on the purpose.
 
+Sdk provide two show functions below, and you can be used one of them depending on the purpose.
 * `AdiscopeGlobalOfferwall.show(unitId, activity, listener)`
 * `AdiscopeGlobalOfferwall.show(unitId, networkName, activity, listener)`
 
