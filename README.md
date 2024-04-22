@@ -56,13 +56,13 @@ allprojects {
 ```groovy
 dependencies {
     // [required] global adiscope core library
-    implementation "com.adiscope.global:adiscope-sdk:1.1.0"
+    implementation "com.adiscope.global:adiscope-sdk:1.2.0"
 
     // must add it to use the gofferwall feature 
     // [required] tapjoy adapter
     implementation "com.adiscope.global:adapter-tapjoy:13.2.1.0"
     // [required] tnk adapter
-    implementation "com.adiscope.global:adapter-tnk:8.03.08.0"
+    implementation "com.adiscope.global:adapter-tnk:8.05.02.0"
 }
 ```
 <br></br>
