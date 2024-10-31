@@ -56,13 +56,13 @@ allprojects {
 ```groovy
 dependencies {
     // [required] global adiscope core library
-    implementation "com.adiscope.global:adiscope-sdk:1.2.0"
+    implementation "com.adiscope.global:adiscope-sdk:1.3.0"
 
     // must add it to use the gofferwall feature 
     // [required] tapjoy adapter
-    implementation "com.adiscope.global:adapter-tapjoy:13.2.1.0"
+    implementation "com.adiscope.global:adapter-tapjoy:14.1.1.0"
     // [required] tnk adapter
-    implementation "com.adiscope.global:adapter-tnk:8.05.02.0"
+    implementation "com.adiscope.global:adapter-tnk:8.06.15.0"
 }
 ```
 <br></br>
@@ -73,7 +73,7 @@ Set your TNK AppId received from Adiscope. TNK Sdk reads this information and in
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
-    <application
+    <application>
         ...
     
         <!-- [required] for tnk adapter -->
@@ -143,7 +143,7 @@ Sdk reads `adiscope.global.mediaId`, `adiscope.global.mediaSecret` meta-data and
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <application
+    <application>
         ...
 
         <!-- Define mediaId, secretKey metadata and 

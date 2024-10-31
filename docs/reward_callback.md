@@ -17,21 +17,21 @@
 * URL_PARAMETERS는 이하 [Gofferwall Server Parameters](#gofferwall-server-parameters) 를 참조합니다.
 * Example
   * Placeholder의 값은 고정되어 있습니다. 이하 응답값에 대한 Key(userID, unit 등...)은 자유로운 포맷으로 사용할 수 있습니다.
-  * http<span>s://</span>my-server.com/anypath/transctionID=[TRANSCTION_ID]&signature=[SIGNATURE]&unitID=[UNIT_ID]&userID=[USER_ID]&adid=[ADID]&unit=[REWARD_UNIT]&amount=[AMOUNT]
+  * http<span>s://</span>my-server.com/anypath?transactionId=[TRANSACTION_ID]&signature=[SIGNATURE]&unitID=[UNIT_ID]&userId=[USER_ID]&adid=[ADID]&currency=[REWARD_UNIT]&amount=[AMOUNT]
 
 <br/><br/>
 
 ## Gofferwall Server Parameters
 
-| Name         | Placeholder   | Description                      | 
-|--------------|---------------|----------------------------------|
-| transctionId | TRANSCTION_ID | 고유한 ID값. 중복호출 여부에 사용 할 수 있다.     |
-| signature    | SIGNATURE     | Callback 유효성 검증에 사용되는 MD5 HASH 값 |
-| unitId       | UNIT_ID       | 참여한 광고 UnitID                    |
-| userId       | USER_ID       | Client에서 setUserID로 설정한 UserID   |
-| adid         | ADID          | 광고 추적 ID(iOS: IDFA)              |
-| currency     | REWARD_UNIT   | 보상 화폐 단위                         |
-| amount       | REWARD_AMOUNT | 보상 지급 수량                         |
+| Name          | Placeholder    | Description                      | 
+|---------------|----------------|----------------------------------|
+| transactionId | TRANSACTION_ID | 고유한 ID값. 중복호출 여부에 사용 할 수 있다.     |
+| signature     | SIGNATURE      | Callback 유효성 검증에 사용되는 MD5 HASH 값 |
+| unitId        | UNIT_ID        | 참여한 광고 UnitID                    |
+| userId        | USER_ID        | Client에서 setUserID로 설정한 UserID   |
+| adid          | ADID           | 광고 추적 ID(iOS: IDFA)              |
+| currency      | REWARD_UNIT    | 보상 화폐 단위                         |
+| amount        | REWARD_AMOUNT  | 보상 지급 수량                         |
 
 * signature의 검증은 Adiscope Admin Page에서 발급받은 **secretKey**와 Callback의 parameters을 통해 값을 검증하게 됩니다. 외부 사용자는 secretKey를 발급받기 위해서는 Gofferwall 담당자를 통해서 발급받아 사용합니다.
 
@@ -69,11 +69,11 @@ app.listen(process.env.PORT || 3412);
 
 app.get('/', function (req, res) {
     var userId = req.query.userId;
-    var rewardUnit = req.query.rewardUnit;
-    var rewardAmount = req.query.rewardAmount;
+    var currency = req.query.currency;
+    var amount = req.query.amount;
     var transactionId = req.query.transactionId;
     var signature = req.query.signature;
-    var plainText = makePlainText(userId, rewardUnit, rewardAmount, transactionId);
+    var plainText = makePlainText(userId, currency, amount, transactionId);
     var hmac = getHMAC(plainText, secret);
 
     console.log(hmac);
@@ -103,8 +103,8 @@ function getHMAC(plainText, secret) {
     return crypto.createHmac('md5', secret).update(plainText).digest('hex');
 }
 
-function makePlainText(userId, rewardUnit, rewardAmount, transactionId) {
-    return userId.concat(rewardUnit, rewardAmount, transactionId);
+function makePlainText(userId, currency, amount, transactionId) {
+    return userId.concat(currency, amount, transactionId);
 }
 
 function isDuplicatedReward(transactionId) {

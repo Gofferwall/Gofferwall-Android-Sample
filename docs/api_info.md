@@ -292,3 +292,28 @@ AdiscopeGlobalOfferwall.show("INPUT_YOUR_GOFFERWALL_UNIT_ID", "INPUT_NETWORK_NAM
 
 })
 ```
+
+### setTNKRewardIconImage
+TNK의 재화 아이콘 이미지를 설정하기 위한 함수로, 프로젝트의 `/res/drawable` 폴더에 추가한 이미지명으로 호출한다.  
+오퍼월 진입 전 설정해야 한다.
+* `boolean setTNKRewardIconImage(String imageName)`
+  * imageName: 재화 아이콘으로 설정할 이미지의 이름
+
+**Java**
+```java
+// If you want to set up custom TNK reward image,
+// you need to call it before call show offerwall.
+// image should be in the res/drawable folder.
+String imageName = "your_image_name";
+AdiscopeGlobalOfferwall.setTNKRewardIconImage(imageName);
+```
+
+
+**Kotlin**
+```kotlin
+// If you want to set up custom TNK reward image,
+// you need to call it before call show offerwall.
+// image should be in the res/drawable folder.
+val imageName = "your_image_name"
+AdiscopeGlobalOfferwall.setTNKRewardIconImage(imageName)
+```
