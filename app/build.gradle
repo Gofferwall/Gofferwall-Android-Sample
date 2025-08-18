@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.nps.gofferwall.sample'
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         applicationId "com.nps.gofferwall.sample"
-        minSdkVersion 21
-        targetSdkVersion 34
+        minSdkVersion 23
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -40,8 +40,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation "com.adiscope.global:adiscope-sdk:1.3.0"
-    implementation "com.adiscope.global:adapter-tapjoy:14.1.1.0"
-    implementation "com.adiscope.global:adapter-tnk:8.06.15.0"
+    implementation "com.adiscope.global:adiscope-sdk:1.4.0"
+    implementation "com.adiscope.global:adapter-tapjoy:14.4.0.0"
+    implementation "com.adiscope.global:adapter-tnk:8.08.40.0"
 }
 

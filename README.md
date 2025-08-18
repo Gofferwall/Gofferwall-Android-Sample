@@ -1,11 +1,11 @@
 # Gofferwall-Android-Sample
-[![GitHub package.json version](https://img.shields.io/badge/Android-1.3.0-blue)](../../releases)
+[![GitHub package.json version](https://img.shields.io/badge/Android-1.4.0-blue)](../../releases)
 [![GitHub package.json version](https://img.shields.io/badge/iOS-1.3.0-blue)](https://github.com/Gofferwall/Gofferwall-iOS-Sample)
 
 ## Requirements
 
-* minSdkVersion 21
-* compileSdkVersion 33
+* minSdkVersion 23
+* compileSdkVersion 35
 * used Java 8
 * The Core SDK includes gms library for collecting ADID  
   (`com.google.android.gms:play-services-ads-identifier:18.1.0`)
@@ -56,13 +56,13 @@ allprojects {
 ```groovy
 dependencies {
     // [required] global adiscope core library
-    implementation "com.adiscope.global:adiscope-sdk:1.3.0"
+    implementation "com.adiscope.global:adiscope-sdk:1.4.0"
 
     // must add it to use the gofferwall feature 
     // [required] tapjoy adapter
-    implementation "com.adiscope.global:adapter-tapjoy:14.1.1.0"
+    implementation "com.adiscope.global:adapter-tapjoy:14.4.0.0"
     // [required] tnk adapter
-    implementation "com.adiscope.global:adapter-tnk:8.06.15.0"
+    implementation "com.adiscope.global:adapter-tnk:8.08.40.0"
 }
 ```
 <br></br>
